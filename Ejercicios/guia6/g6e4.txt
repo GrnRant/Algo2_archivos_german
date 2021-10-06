@@ -1,0 +1,24 @@
+a)La complejidad sería O(k^2*n)
+
+Ver cota de n*sum i, i=2 to k
+
+b)Algoritmo eficiente que use dividir y conquistar?
+
+mezclar(array temp, conjunto de arrays m, k)
+{
+    if k==2
+    {
+        temp = unir(m[0], m[1])
+    }
+    else
+        conj_izq = primera mitad de m
+        conj_der = segunda mitad de m
+        mezclar(temp, conj_izq, k/2)
+        mezclar(temp, conj_der, k/2 + 1)
+        temp = unir(conj_izq, conj_der)
+}
+
+
+Divido los k subproblemas en dos problemas de k/2 y así sucesivamente. El coste
+de combinar los problemas va a ser k*n, mientras que la cantidad de veces que se 
+van a combinar es log(k). Luego, sería de orden O(k*log(k)*n).

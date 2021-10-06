@@ -1,0 +1,60 @@
+Ejercicio 4 (cuarta oportunidad).
+
+La mínima diferencia de dos nodos adyacentes de un arbol t se puede obtener como el
+mínimo entre el subárbol derecho (t.der), el izquierdo (t.izq) y los nodos adyacentes
+que se obtienen entre t.der y t.izq. Si el árbol está vacío o tiene un solo elemento,
+se retorna NULL lo que significa que no tiene minDif.
+
+Se considera que NULL es el máximo número posible para que se entienda mejor el pseudocódigo.
+
+minDif(arbol t)
+{
+    if(t == NULL || t.tam == 1)
+        return NULL
+
+    m_izq = minDif(t.izq)
+    m_der = minDif(t.der)
+    m_mid = NULL
+
+    rec_izq = t.izq
+    rec_der = t.der
+    
+    for(i = 0; rec_izq != NULL && rec_der != NULL; i++)
+    {
+        temp = rec_izq.raiz->clave - rec_der.raiz->clave
+
+        if(*m_mid > temp)
+            m_mid = &temp
+
+        if(i es par)
+        {
+            rec_izq = rec_izq->der
+            rec_der = rec_der->izq
+        }
+        else if(i es impar)
+        {
+            rec_izq = rec_izq->izq
+            rec_der = rec_der->der
+        }
+    }
+   
+   if(m_mid < m_der && m_mid < m_izq)
+        return m_mid
+
+    if(m_izq < m_der && m_izq < m_mid)
+        return m_izq
+
+    else
+        return m_der
+}
+
+Por ejemplo en el árbol del ejercicio, se llega primero a las hojas,
+como tienen tamaño 1 no devuelven nada. Luego se retorna y se llega al subárbol
+anterior y se comparan el 7 - 4 = 3 y el 9 -- 1 = 10 con minDif de las hojas (NULL), entonces
+se retorna el 1 por un lado y 10 por el otro. Finalemente, se llega al árbol entero, se compara
+en el for 9 - 7 = 2 y 3 -- 1 = 4, se tiene entonces m_mid = 2 y por último se compara el 2
+con lo retornado de los subárboles izq y der que es 3 y 10, por lo tanto se retorna el 2.
+
+Dado que nunca se repiten comparaciones y la cantidad de combinaciones
+de nodos adyacentes posibles es tetha(n), luego no que otra que la 
+complejidad del algoritmo sea theta(n).

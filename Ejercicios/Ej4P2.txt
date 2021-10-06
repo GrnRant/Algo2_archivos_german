@@ -1,0 +1,18 @@
+preorder(arbol, k)
+    si arbol está vacío
+        retornar
+    k = k - 1
+    si k>1
+        preorder(subarbol_izquierdo, k)
+    si sigue siendo k>1
+        preorder(subarbol_derecho, k)
+    en otro caso
+        devolver valor del nodo actual
+
+Para esta funcion, el valor de k se modifica por cada llamado de esta (por ejemplo en C++ se pasaría por referencia o puntero).
+De esta forma, a medida que se recorren los nodos de forma preorden, cuando se sale del scope de alguno de los llamados recursivos
+el valor de k queda modifcado. Como al llegar a k == 1 se terminan todos los llamados recursivos, está claro que aunque hayan n nodos,
+se recorren k<n nodos por lo tanto el costo de la función debería de ser O(k). Por ejemplo, en el caso del árbol del enunciado, si k = 2
+entonces se empieza por la raíz, y se llama a preorder pero para el subarbol_izquierdo y k pasa a valer 1, por lo tanto se terminan con
+los llamados recursivos y se devuelve el valor del nodo actual (el cual sería 1).
+    

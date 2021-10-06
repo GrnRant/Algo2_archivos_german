@@ -1,0 +1,66 @@
+a)
+Recorrido inorden, post o pre.
+Pre:
+imprimirClaves(arbol t)
+{
+    if(t.der == NULL && t.izq == NULL)
+        return
+
+    print(t.clave) 
+
+    else if(t.izq != NULL)
+        imprimirClaves(t.izq)
+
+    else
+        imprimirClaves(t.der)
+}
+
+b)
+Algún recorrido pero usando pila para sacar recursividad.
+Pre:
+imprimirClaves(arbol t)
+{
+    iter = t
+    while(s.vacio == false && iter.der != NULL && iter.izq != NULL)
+    {
+        print(iter.clave) 
+        if(iter.der == NULL && iter.izq == NULL)
+        {
+            if(s.vacio() == false)
+                iter = s.pull()
+        }
+        else if(iter.izq != NULL)
+        {
+            if(iter.der != NULL)
+                s.push(iter.der)
+            iter = iter.izq
+        }
+        else
+        {
+            iter = iter.der
+        }
+    }
+}
+
+c)
+imprimirClaves(arbol t)
+{
+    iter = t
+    while(i < t.tam)
+    { 
+        if(iter.der == NULL && iter.izq == NULL)
+        { 
+           print(iter.clave)
+           iter = iter.up()
+        }
+        else if(iter.izq != NULL)
+        {
+            iter = iter.izq
+        }
+        else
+        {
+            iter = iter.der
+        }
+        i++
+    }
+}

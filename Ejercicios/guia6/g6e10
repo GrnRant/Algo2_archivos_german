@@ -1,0 +1,16 @@
+buscarMayoritario(A, n)
+    si n == 1
+        devlover A[0]
+    en otro caso
+        m1 = buscarMayoritario(primera mitad)
+        m2 = buscarMayoritario(segunda mitad)
+    si existe m1
+        buscar apariciones en segunda mitad de m1
+    si existe m2
+        buscar apariciones en primera mitad de m2
+    si ninguno existe
+        devlover no hay minoritarios
+    si apariciones m1< apariciones m2
+        devlover m2
+    si apariciones m2 < apariciones m1
+        devolver m1

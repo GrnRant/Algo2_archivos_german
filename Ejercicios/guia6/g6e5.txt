@@ -1,0 +1,27 @@
+a)
+
+encontrarMasPesada(array v, int n)
+{
+    if(n == 1)
+        return v[0];
+    else
+    {
+        subL = subconjunto izquierdo de v
+        subR = subconjunto derecho de v
+
+        if(masPesado(subR, subL) == subR)
+            encontrarMasPesada(subR, n/2)
+
+        else if(masPesado(subR, subL) == subR)
+            encontrarMasPesada(subL, n/2)
+        
+        else
+            return error
+    }
+}
+
+Obs: es O(log(n))
+
+b) Si es O(log(m1) + log(m2)) mas pesado, significa que por cada llamado de encontrarMasPesada se
+suma un tiempo log(n). Por nivel sería O(log(n/2^i)) = O(log(n) - i), por lo que, como cada nivel tiene un coste 
+de O(log(n)) y hay log(n) niveles el coste aumenta en O((log(n))^2).

@@ -1,0 +1,19 @@
+Suponiendo que operaciones aritméticas toman tiempo constante (es decir pow(n, k) es O(1)):
+
+raiz(n, k)
+{
+    resultado = n
+    _raizK(n, k, resultado)
+}
+
+
+_raizK(n, k, resultado)
+{
+    if(pow(resultado - 1, k)<n && pow(resultado + 1, k)>n)
+        return resultado
+    temp = pow(resultado/2, k)
+    if(temp > n)
+        raizK(n, k, resultado - resultado/2)
+    else
+        raizK(n, k, resultado + resultado/2)
+}

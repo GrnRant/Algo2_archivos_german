@@ -1,0 +1,18 @@
+Si n es la cantidad de nodos, nulls = n+1 ¿Por qué?
+En el caso de un arbol en el que se usan la máxima cantidad
+de nodos por nivel, si los niveles son i y nodos n:
+Hojas = 2^(i-1)
+i = log(n + 1)
+nulls = 2*2^(i-1) = n + 1
+
+En el caso de los árboles degenerados en listas:
+Hojas = 1
+i = n
+nulls = 1 null por nodo que no es hoja + 2 null de hoja = n - 1 + 2 = n + 1
+
+Esto es para cualquier tipo de árbol ya que por ejemplo si se agarra una hoja h1
+de un árbol y se la pone a la izquierda o derecha de otra hoja h2 (la cual entonces deja de ser hoja)
+esto deja un null nuevo en el lugar anterior de la hoja h1 (+ 1 null) pero también quita uno de los
+null de la hoja h2 (- 1 null), entonces esto siempre se compensa. Sucede lo mismo si se genera otra hoja
+moviendo una hoja h1 un nivel más arriba en el espacio vacío de un nodo n2, sacando un lugar (- 1 null) pero
+creando otro espacio vacío (+ 1 null).

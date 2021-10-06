@@ -1,0 +1,40 @@
+El primer elemento es el mínimo. Me muevo por columnas o filas
+dependiendo de cual elemento intercambio. En el espacio anterior pongo
+el menor elemento de la comparación.
+
+eliminarMinimo(matrix M, n, m)
+{
+    M[0][0] = estrella
+
+    for(c1 = 1,  r1= 0, c2 = 0,  r2= 1; c1<n && r2<m;)
+    {
+        if(M[r2][c2] > M[r1][c1])
+        {
+            swap(M[r1][c1], M[r1][c1 - 1])
+            c1++
+            c2++
+        }
+        else
+        {
+            swap(M[r2][c2], M[r2 - 1][c2])
+            r1++
+            r2++
+        }
+    }
+    if(r2 == m)
+    {
+        while(c1<n)
+        {
+            swap(M[r1][c1], M[r1][c1 - 1])
+            c1++
+        }
+    }
+    else if(c1 == n)
+    {
+        while(r2<m)
+        {
+            swap(M[r2][c2], M[r2 - 1][c2])
+            r2++
+        }
+    }
+}

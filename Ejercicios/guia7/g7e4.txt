@@ -1,0 +1,27 @@
+b)Busco max en subarboles izq (M1) y der(M2), y también maximos desde
+el nodo raíz del izq (m1) y der(m2). Una vez encontrados, determino si 
+M1 es el más grande, M2 o m1 + m2 + raíz.
+
+pesoMax(arbol t)
+{
+    if(t.n == 1)
+        return (t.raíz, t.raíz)
+
+    (M1, m1) = pesoMax(t.der)
+    (M2, m2) = pesoMax(t.izq)
+    MR = m1 + m2 + t.raiz
+
+    if((m1 + t.raiz) > (m2 + t.raiz))
+        mr = m1 + t.raiz
+    else
+        mr = m2 + t.raiz
+
+    if(MR > M1 && MR > M2)
+        return (MR, mr)
+    else if(M1 > MR && M1 > M2)
+        return (M1, mr)
+    else
+        return (M2, mr)
+}
+
+Falta considerar si no hay subárboles izquierdo y derecho

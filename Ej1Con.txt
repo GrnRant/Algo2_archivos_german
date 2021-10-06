@@ -1,0 +1,11 @@
+obtenerFusiones(A , i = 0, n)
+    si n==1
+        agreagarIntervalo(F, A[0]) 
+        retornar A[0]
+    m = n/2
+    izq = obtenerFusiones(A, m)
+    si n es impar
+        m++
+    der = obtenerFusiones(A + n/2, m)
+    para i desde j hasta 
+    

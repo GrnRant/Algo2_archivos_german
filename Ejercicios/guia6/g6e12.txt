@@ -1,0 +1,8 @@
+a) 
+sumaMax(array A, n)
+{
+    if(n == 1)
+        return A[0]
+    a = sumaMax(A, n/2)
+    b = sumaMax()
+}

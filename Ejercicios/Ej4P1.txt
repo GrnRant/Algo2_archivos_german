@@ -1,0 +1,19 @@
+recorrido preorder y cuando llego a una hoja, guardo camino en una tabla y busco siguiente
+
+caminos(arbol, cantidad_caminos = 0, recorrido = 0)
+{
+    si es vacío
+        retornar cantidad_caminos
+    si es hoja
+        recorrido++
+        cantidad_caminos++
+        retornar cantidad_caminos
+    recorrido ++
+    cantidad_caminos = caminos(arbol_izq, caminos, recorrido)
+    caminos(arbol_der, caminos, recorrido)
+
+    si arbol es arbol original
+        retornar recorrido/cantidad_caminos
+}
+
+caminos: vector con la longitud_camino de cada camino encontrado

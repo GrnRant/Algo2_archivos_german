@@ -1,0 +1,98 @@
+a)
+Mayoritario del vector v es el mayoritario también de una de sus mitades.
+El mayoritario de una de sus mitades es mayoritario total más de una vez o dos 
+dependiendo de si son dos mitades justas.
+
+econtrarMayoritario(array A, n)
+{
+    if(n == 1)
+        retornar A[0]
+
+    m = n/2
+    L = econtrarMayoritario(A, m)
+    
+    if(n es impar)
+        m++
+    R = econtrarMayoritario(A + n/2, m)
+    
+    if(L != null)
+    {
+        for(i = n/2; i<n; i++)
+        {
+            if(L == A[i])
+                aparciones++
+            if(n es par y aparciones > 0)
+                retornar L
+            else if(n es impar y aparciones > 1)
+                retornar L
+        }        
+    }
+    if(R != null)
+    {
+        for(i = 0; i<n/2; i++)
+        {
+            if(L == A[i])
+                aparciones++
+            if(aparciones > 0)
+                retornar R
+        }        
+    }
+    retornar null
+}
+
+b)
+El mayoritario del vector B no es necesariamente mayoritario de A, pero si es un candidato.
+encontrarMayoritario(array A, n)
+{
+    if(n == 1)
+    {
+        return A[0]
+    }
+    if(n == 0)
+    {
+        return null
+    }
+
+    if(n es impar)
+        (B, m) = generarB(A, n - 1)
+    else 
+        (B, m) = generarB(A, n)
+
+    candidato = encontrarMayoritario(B, m)
+    if(candidato != null)
+    {
+        for(i = 1; i<=n; i++)
+        {
+            if(candidato == A[i])
+                apariciones++
+        }
+
+        l = n/2
+        if(n es impar)
+            l++
+        if(apariciones > l)
+            return candidato
+        else
+            return null
+    }
+    else if(candidato == null && n es impar)
+    {
+        candidato = A[n]
+        for(i = 1; i<=n; i++)
+        {
+            if(candidato == A[i])
+                apariciones++
+        }
+        l = n/2 + 1
+        if(apariciones > l)
+            return candidato
+        else
+            return null
+    }
+    else
+        return null
+}
+
+La recurrencia se de la forma T(n) = T(n/2) + O(n). Usando teorema maestro
+se obtiene que es O(n), es decir es más eficiente. No utiliza dividir y conquistar
+ya que no subidivide al problema en k subproblemas independientes.

@@ -1,0 +1,44 @@
+Ejercicios sobre árboles binarios
+Escribir  algoritmos para:
+a)	Determinar la altura de un AB
+b)	Determinar si un AB está balanceado por su altura con dif permitida d
+c)	Determinar si un árbol binario es simétrico (simetría axial de eje que pasa por la raíz)
+d)	Determinar cual el nivel del árbol con más nodos
+e)	Obtener un ABB  balanceado a partir de un ABB no balanceado en un tiempo O(n)
+f)	Mezclar dos ABB balanceados de n y m nodos respectivamente generando un nuevo ABB balanceado a un coste O(n+m)
+
+a)Si el arbol está vacío, su altura es cero. De otra forma, su altura
+es 1 + altura del subárbol izquierdo si h_izq > h_der o 1 + altura del
+subárbol derecho en caso contrario.
+
+altura(arbol t)
+{
+    if(t == NULL)
+        return 0
+
+    h_izq = altura(t.izq)
+    h_der = altura(t.der)
+
+    if(h_izq > h_der)
+    {
+        h_izq++
+        return h_izq
+    }
+    else
+    {
+        h_der++
+        return h_der
+    }
+}
+
+b)is_balanced(arbol t, size_t d)
+{
+    if(abs(altura(t.der) - altura(t.izq)) <= d)
+    {
+        is_balanced(t.izq, d)
+        is_balanced(t.der, d)
+    }
+    else
+        return false
+    return true
+}

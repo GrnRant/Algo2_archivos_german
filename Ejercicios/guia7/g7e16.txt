@@ -1,0 +1,44 @@
+16)
+a)t es ABB si t.izq es ABB, t.der es ABB y si la clave del nodo izquierd ci 
+y del derecho cd son tales que ci < r < ci. Planteo lo siguiente
+
+is_bst(arbol t)
+{
+    if(t.n == 1)
+        return true
+    if(is_bst(t.der) == true && is_bst(t.izq) == true)
+    {
+        ci = t.izq->clave
+        cd = t.der->clave
+        cr = t.root->clave
+        if(ci < cr < cd)
+            return true
+        else
+            return false
+    }
+    else
+        return false
+}
+
+b)t es AVL si t.izq es AVL, t.der es AVL, abs(hd-hi)<=1 y si ci <r<ci.
+is_bst(arbol t)
+{
+    if(t.n == 1)
+        return true
+    tL = t.izq
+    tR = t.der
+    hd = tR.h
+    hi = TL.h
+    if(is_bst(tL) == true && is_bst(tR) == true && abs(hd - hi) <= 1)
+    {
+        ci = tL.clave
+        cd = tR.clave
+        cr = t.root->clave
+        if(ci < cr < cd)
+            return true
+        else
+            return false
+    }
+    else
+        return false
+}

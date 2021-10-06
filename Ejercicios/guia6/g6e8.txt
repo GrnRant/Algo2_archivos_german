@@ -1,0 +1,21 @@
+Si el último número es menor al subíndice proprio o el primero es mayor entonces no hay.
+Voy dividiendo arreglo en mitades y analizando si se cumple o no esto.
+
+is_subindice(array v, n, inic, fin)
+{
+    if(n == 1)
+    {
+        if(v[inic - 1] == inic)
+            return true
+        else
+            return false
+    }
+    if(v[inic - 1] > inic || v[fin - 1] < fin)
+        return false
+    else if(is_subindice(v, n/2, inic, fin/2) == true)
+        return true
+    else if(is_subindice(v, n/2 + 1, inic + fin/2, fin) == true)
+        return true
+    else
+        return false
+}
